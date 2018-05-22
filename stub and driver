@@ -1,0 +1,37 @@
+//stub&driver for the purchase of coffee and tea
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+void showfees (double, int);
+
+int main()
+{
+  //these are the prices for coffee and tea
+  const double coffee = 2.50;
+  const double tea = 3.00;
+  
+  cout<<fixed<<showpoint<<setprecision(2)<<endl;
+  //this function is testing the purchase of coffee
+  cout <<"Testing a coffee purchase.\n"
+      <<"Calling the showfees function with arguments "
+      <<coffee<< " and 10.\n";
+      showfees(coffee, 3);
+      
+  //this function is testing the purchase of tea    
+  cout<<"\nTesting a tea purchase.\n"
+      <<"Calling the showfees function with arguments "
+      <<tea<< " and 4\n";
+      showfees(tea, 4);
+      
+  return 0;    
+}
+
+void showfees (double price, int quantity)
+{
+  cout<<fixed<<showpoint<<setprecision(2)<<endl;
+  cout<<"The showfees function was called "   <<"with the following arguments:\n"
+      <<"The total charges are $"
+      <<(price * quantity) <<endl;
+}
