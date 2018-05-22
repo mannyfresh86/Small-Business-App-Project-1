@@ -1,0 +1,148 @@
+    //This program will be used for online ordering at a coffee shop.
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void showTotal(double *);
+
+const int COLS = 3;
+const int tbl1_rows=1;
+const int tbl2_rows=1;
+
+
+
+void showArray(const double[][COLS], int);
+
+int main()
+{
+  cout<<"Hello, we offer our drinks in small medium and large, these are the prices for both tea and coffee!\n";
+  
+cout<<endl;
+{
+  double table1[tbl1_rows][COLS] = {2.75, 3.25, 3.75};
+  double table2[tbl2_rows][COLS] = {2.50, 3.00, 3.50};
+  
+  cout<<"The prices for the different sizes of coffee are: "<<fixed<<showpoint<<setprecision(2);
+  showArray(table1, tbl1_rows);
+  cout<<endl;
+  cout<<"The prices for the different sizes of tea are: "<<fixed<<showpoint<<setprecision(2);
+  showArray(table2, tbl2_rows);
+  cout<<endl;
+  
+}
+
+  int size, qty, addOrder;
+  string temp, menuchoice, name;
+  double coffeePrice=2.75, teaPrice=2.50, total, price;
+  
+  
+  do
+  {
+  cout<<"Can you please enter your name to begin your order?\n";
+  cin>>name;
+  cout<<endl;
+  cout<<name<<", would you like to order coffee or tea?\n";
+  cout<<"1) Coffee\n";
+  cout<<"2) Tea\n";
+  cin>>menuchoice;
+ 
+  
+   if (menuchoice == "1")
+    {
+      menuchoice="Coffee";
+      price=coffeePrice;
+    }
+    else if (menuchoice == "2")
+    {
+      menuchoice="Tea";
+      price=teaPrice;
+    }
+   
+  cout<<menuchoice<<endl;
+  
+  
+  cout<<"Would you like your beverage to be Hot or Iced?\n";
+  cout<<"1) Hot\n";
+  cout<<"2) Iced\n";
+  cin>>temp;
+ 
+  if(temp=="1")
+  {
+    temp= "Hot";
+  }
+  else if (temp=="2")
+  {
+    temp="Iced";
+  }
+ cout<<temp<<endl;
+  
+  cout<<"Choose a size for your drink: \n";
+  cout<<"1) Small\n";
+  cout<<"2) Medium\n";
+  cout<<"3) Large\n";
+  cin>>size;
+  while (size<1||size>3)
+  {
+    cout<<"Please select a valid entry: ";
+    cin>>size;
+  }
+  
+  switch (size)
+  {
+    case 1: cout<<"Small";
+    break;
+    case 2: cout<<"Medium";
+    break;
+    case 3: cout<<"Large";
+    break;
+    default:cout<<"Invalid option\n";
+  }
+  
+ cout<< endl;
+  
+  cout<<"Now enter the quantity of the item you wish to purchase: \n";
+  cin>>qty;
+  cout<<qty<<endl;
+  
+  cout<<"Would you like to add another item to your order?\n";
+  cout<<"1) Yes, please\n";
+  cout<<"2) No, thanks\n";
+  cin>>addOrder;
+  cout<<addOrder<<"\n\n";
+  
+  }
+  while (addOrder==1);
+  
+  if (addOrder==2)
+   { 
+     cout<<
+    "***********************\n";
+    cout<<"Your order summary: \n";
+    cout<<
+    "***********************\n";
+    cout<< qty << temp << menuchoice <<
+    "\n";
+    
+    total=price*qty;
+    showTotal(&total);
+   }
+    
+return 0;
+}
+void showArray(const double numbers [][COLS], int rows)
+{
+  for (int x=0; x<rows; x++)
+  {
+    for (int y=0; y<COLS; y++)
+    {
+      cout<<setw(4)<<numbers[x][y]<<" ";
+    }
+    cout<<endl;
+  }
+}
+
+
+void showTotal(double *total)
+{
+  cout<<"Your total is "<<fixed<<showpoint<<setprecision(2)<<*total;
+}
+
